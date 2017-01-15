@@ -6,8 +6,14 @@
 	<div class="answers">
 	<?php foreach($answers_model as $answer): ?>
 	
-		<div style="margin-top: 1em; padding: 2em 2em" data-is_true="<?= $answer->is_true ?>" class="col-md-6 btn btn-primary"><?= $answer->text ?></div>
+		<div style="margin-top: 1em; padding: 2em 2em" data-true="<?= $answer->is_true ?>" class="answer col-md-3 btn btn-primary"><?= $answer->text ?></div>
 	
-	<?php endforeach;?>
+	<?php endforeach; ?>
+	</div>
+</div>
+
+<div class="jumbotron">
+	<div class="col-md-12">
+		<h1 class="result"></h1>
 	</div>
 </div>
