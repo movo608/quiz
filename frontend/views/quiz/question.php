@@ -14,6 +14,6 @@
 
 <div class="jumbotron">
 	<div class="col-md-12">
-		<h1 class="result"></h1>
+		<h1 class="result" data-answer="no"></h1>
 	</div>
 </div>
