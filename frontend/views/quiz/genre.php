@@ -20,9 +20,9 @@ use yii\helpers\Html;
 				<p>
 				<?php foreach($questions_model as $question): ?>
 				
-					<?=Html::a('<i>'.$question->text.'</i>', 
+					<?= Html::a('<i>'.$question->text.'</i>', 
 							['/quiz/question/','id' => $question->id ], 
-							['class' => 'btn btn-primary']) 
+							['class' => 'btn btn-primary', 'data-is_active' => $question->is_active]) 
 					?>
 				
 				<?php endforeach; ?>

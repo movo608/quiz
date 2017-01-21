@@ -10,6 +10,7 @@ use Yii;
  * @property integer $id
  * @property integer $genre_id
  * @property string $text
+ * @property integer $is_active
  */
 class Questions extends \yii\db\ActiveRecord
 {
@@ -27,8 +28,8 @@ class Questions extends \yii\db\ActiveRecord
     public function rules()
     {
         return [
-            [['genre_id', 'text'], 'required'],
-            [['genre_id'], 'integer'],
+            [['genre_id', 'text', 'is_active'], 'required'],
+            [['genre_id', 'is_active'], 'integer'],
             [['text'], 'string', 'max' => 256],
         ];
     }
@@ -42,6 +43,7 @@ class Questions extends \yii\db\ActiveRecord
             'id' => 'ID',
             'genre_id' => 'Genre ID',
             'text' => 'Text',
+            'is_active' => 'Is Active',
         ];
     }
 }
