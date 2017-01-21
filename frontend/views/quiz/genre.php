@@ -1,6 +1,6 @@
 <?php
 use yii\helpers\Html;
-
+use common\models\AnsweredQuestions;
 ?>
 
 <h1><?= Html::encode($this->title) ?></h1>
@@ -18,14 +18,29 @@ use yii\helpers\Html;
 		<div class="row">
 			<div class="col-md-12">
 				<p>
-				<?php foreach($questions_model as $question): ?>
-				
-					<?= Html::a('<i>'.$question->text.'</i>', 
-							['/quiz/question/','id' => $question->id ], 
-							['class' => 'btn btn-primary', 'data-is_active' => $question->is_active]) 
-					?>
-				
-				<?php endforeach; ?>
+				<?php
+				foreach ($questions_model as $question) {
+					
+					if (! $is_found = AnsweredQuestions::find()->where(['question_id' => $question->id, 'user_id' => Yii::$app->user->id])->one()) {
+					
+						echo Html::a('<i>' . $question->text . '</i>', [
+								'/quiz/question/',
+								'id' => $question->id 
+						], [
+								'class' => 'btn btn-primary col-md-6 col-lg-6 col-sm-12 col-xs-12 text-justify',
+								'data-is_active' => $question->is_active 
+						]);
+					} else {
+						echo Html::a('<i>' . $question->text . '</i>', [
+								'/quiz/question/',
+								'id' => $question->id
+						], [
+								'class' => 'btn btn-primary col-md-6 col-lg-6 col-sm-12 col-xs-12 text-justify disabled',
+								'data-is_active' => $question->is_active
+						]);
+					}
+				}
+				?>
 				</p>
 			</div>
 		</div>

@@ -2,6 +2,7 @@
 
 namespace frontend\controllers;
 
+use Yii;
 use yii\web\controller;
 /*
  * uses the models for genres, questions and answers
@@ -11,6 +12,7 @@ use common\models\Genres;
 use common\models\Questions;
 use common\models\Answers;
 use Symfony\Component\Console\Question\Question;
+use common\models\AnsweredQuestions;
 
 /*
  * QuizzController is the root controller for the quizz section of the website
@@ -91,11 +93,13 @@ class QuizController extends Controller {
 	 */
 	public function actionApi($id) {
 		
-		$question_model = Questions::find()->where(['id' => $id])->one();
+		$answered_question_model = new AnsweredQuestions();
+
+		$answered_question_model->user_id = Yii::$app->user->id;
 		
-		$question_model->is_active = 0;
+		$answered_question_model->question_id = $id;
 		
-		$question_model->save();
+		$answered_question_model->save();
 		
 		return $this->render('api');
 	}
