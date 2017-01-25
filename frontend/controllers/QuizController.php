@@ -13,6 +13,9 @@ use common\models\Questions;
 use common\models\Answers;
 use Symfony\Component\Console\Question\Question;
 use common\models\AnsweredQuestions;
+use common\models\SpecialQuestions;
+use common\models\SpecialQuestionsAnswers;
+use yii\web\HttpException;
 
 /*
  * QuizzController is the root controller for the quizz section of the website
@@ -90,18 +93,37 @@ class QuizController extends Controller {
 	/*
 	 * changes the 'is_active' field in the database to 0
 	 * if the API-let is called upon
+	 * url-model: quiz/api/ + id provided by AJAX
+	 * 
+	 * @return nothing, blank page
 	 */
 	public function actionApi($id) {
 		
-		$answered_question_model = new AnsweredQuestions();
-
+		$answered_question_model = new AnsweredQuestions();	
 		$answered_question_model->user_id = Yii::$app->user->id;
-		
 		$answered_question_model->question_id = $id;
-		
 		$answered_question_model->save();
-		
+			
 		return $this->render('api');
+	}
+	
+	/*
+	 * renders a special question, called by the question id in the url
+	 * url-model: quiz/special/ + id provided by USER
+	 * @return mixed
+	 */
+	public function actionSpecial($id) {
+		
+		if ($special_model = SpecialQuestions::find()->where(['id' => $id])->one()) {
+			$special_answers_model = SpecialQuestionsAnswers::find()->where(['special_question_id' => $id])->all();
+			
+			return $this->render('special', [
+					'special_model' => $special_model,
+					'special_answers_model' => $special_answers_model
+			]);
+		} else {
+			throw new HttpException('400', 'The special question id provided in the url is invalid. Fuck off. Now.');
+		}
 	}
 
 }

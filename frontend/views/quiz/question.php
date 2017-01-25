@@ -1,3 +1,9 @@
+<?php
+$this->title = $selected_question->id;
+$this->params ['breadcrumbs'] [] = 'Questions';
+$this->params ['breadcrumbs'] [] = $this->title;
+?>
+
 <div class="page-title">
 	<h1><?= $selected_question->text ?></h1>
 </div>
@@ -8,7 +14,10 @@
 	<div class="answers">
 	<?php foreach($answers_model as $answer): ?>
 	
-		<button id="<?= $answer->question_id ?>" style="margin-top: 1em; padding: 2em 2em" data-true="<?= $answer->is_true ?>" class="answer col-md-3 btn btn-primary">	<?= $answer->text ?></button>
+		<button id="<?= $answer->question_id ?>"
+			style="margin-top: 1em; padding: 2em 2em"
+			data-true="<?= $answer->is_true ?>"
+			class="answer col-md-3 btn btn-primary">	<?= $answer->text ?></button>
 		
 	<?php endforeach; ?>
 	</div>
@@ -85,7 +94,7 @@ var db_update = function() {
 	$.get(home_url + '/web/quiz/api/' + id, {
 		
 	}, function() {
-		alert('FUCK YEAH, NIGGA.');
+		// API call done
 	});
 	
 };

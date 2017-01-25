@@ -1,20 +1,18 @@
 <?php
 use yii\helpers\Html;
 use common\models\AnsweredQuestions;
-?>
 
-<h1><?= Html::encode($this->title) ?></h1>
+$this->title = 'Questions';
+$this->params['breadcrumbs'][] = $selected_genre->name;
+?>
 
 <div class="container-fluid">
 	<div class="col-md-12">
-		<div class="row">
-			<h1 class="page-title">
+		<div class="page-header">
+			<h1>
 				Questions for the genre <span class="selected_genre">"<?= $selected_genre->name ?>"</span>
 			</h1>
 		</div>
-
-		<br>
-
 		<div class="row">
 			<div class="col-md-12">
 				<p>
