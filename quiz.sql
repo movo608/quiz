@@ -3,9 +3,9 @@
 -- http://www.phpmyadmin.net
 --
 -- Host: 127.0.0.1
--- Generation Time: Jan 21, 2017 at 02:50 PM
--- Server version: 10.1.13-MariaDB
--- PHP Version: 7.0.8
+-- Generation Time: Jan 25, 2017 at 06:07 PM
+-- Server version: 10.1.19-MariaDB
+-- PHP Version: 7.0.13
 
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
 SET time_zone = "+00:00";
@@ -19,6 +19,18 @@ SET time_zone = "+00:00";
 --
 -- Database: `quiz`
 --
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `answered_questions`
+--
+
+CREATE TABLE `answered_questions` (
+  `id` int(11) NOT NULL,
+  `user_id` int(11) NOT NULL,
+  `question_id` int(11) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 -- --------------------------------------------------------
 
@@ -91,16 +103,64 @@ CREATE TABLE `questions` (
   `id` int(11) NOT NULL,
   `genre_id` int(11) NOT NULL,
   `text` varchar(256) NOT NULL,
-  `is_active` int(11) NOT NULL
+  `photo` varchar(256) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 --
 -- Dumping data for table `questions`
 --
 
-INSERT INTO `questions` (`id`, `genre_id`, `text`, `is_active`) VALUES
-(1, 1, 'What is the name of the Powerwolf band frontman?', 1),
-(2, 1, 'What is the name of the former lead singer of Nightwish?', 1);
+INSERT INTO `questions` (`id`, `genre_id`, `text`, `photo`) VALUES
+(1, 1, 'What is the name of the Powerwolf band frontman?', 'http://www.pandora.com/art/public/int/9/1/7/1/840588101719_500W_500H.jpg'),
+(2, 1, 'What is the name of the former lead singer of Nightwish?', '');
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `special_questions`
+--
+
+CREATE TABLE `special_questions` (
+  `id` int(11) NOT NULL,
+  `text` varchar(256) NOT NULL,
+  `add_on_type` varchar(10) NOT NULL,
+  `add_on` varchar(256) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+
+--
+-- Dumping data for table `special_questions`
+--
+
+INSERT INTO `special_questions` (`id`, `text`, `add_on_type`, `add_on`) VALUES
+(2, 'Who is this ?', 'photo', 'http://www.powerwolf.net/images/wolves/attila.jpg'),
+(3, 'Who are these ?', 'video', '<iframe width="560" height="315" src="https://www.youtube.com/embed/BSxoNrjt7Us?showinfo=0" frameborder="0" allowfullscreen></iframe>');
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `special_questions_answers`
+--
+
+CREATE TABLE `special_questions_answers` (
+  `id` int(11) NOT NULL,
+  `text` varchar(32) NOT NULL,
+  `special_question_id` int(11) NOT NULL,
+  `is_true` int(11) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+
+--
+-- Dumping data for table `special_questions_answers`
+--
+
+INSERT INTO `special_questions_answers` (`id`, `text`, `special_question_id`, `is_true`) VALUES
+(1, 'Attila Dorn', 2, 1),
+(2, 'Ulrich', 2, 0),
+(3, 'Michael Jackson', 2, 0),
+(4, 'Jesus Christ', 2, 0),
+(5, 'Serenity', 3, 1),
+(6, 'Oasis', 3, 0),
+(7, 'Nightwish', 3, 0),
+(8, 'Dimmu Borgir', 3, 0);
 
 -- --------------------------------------------------------
 
@@ -132,6 +192,12 @@ INSERT INTO `user` (`id`, `username`, `auth_key`, `password_hash`, `password_res
 --
 
 --
+-- Indexes for table `answered_questions`
+--
+ALTER TABLE `answered_questions`
+  ADD PRIMARY KEY (`id`);
+
+--
 -- Indexes for table `answers`
 --
 ALTER TABLE `answers`
@@ -156,6 +222,18 @@ ALTER TABLE `questions`
   ADD PRIMARY KEY (`id`);
 
 --
+-- Indexes for table `special_questions`
+--
+ALTER TABLE `special_questions`
+  ADD PRIMARY KEY (`id`);
+
+--
+-- Indexes for table `special_questions_answers`
+--
+ALTER TABLE `special_questions_answers`
+  ADD PRIMARY KEY (`id`);
+
+--
 -- Indexes for table `user`
 --
 ALTER TABLE `user`
@@ -168,6 +246,11 @@ ALTER TABLE `user`
 -- AUTO_INCREMENT for dumped tables
 --
 
+--
+-- AUTO_INCREMENT for table `answered_questions`
+--
+ALTER TABLE `answered_questions`
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
 --
 -- AUTO_INCREMENT for table `answers`
 --
@@ -183,6 +266,16 @@ ALTER TABLE `genres`
 --
 ALTER TABLE `questions`
   MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
+--
+-- AUTO_INCREMENT for table `special_questions`
+--
+ALTER TABLE `special_questions`
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
+--
+-- AUTO_INCREMENT for table `special_questions_answers`
+--
+ALTER TABLE `special_questions_answers`
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=9;
 --
 -- AUTO_INCREMENT for table `user`
 --

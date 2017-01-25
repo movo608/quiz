@@ -26,7 +26,6 @@ $this->params['breadcrumbs'][] = $selected_genre->name;
 								'id' => $question->id 
 						], [
 								'class' => 'btn btn-primary col-md-6 col-lg-6 col-sm-12 col-xs-12 text-justify',
-								'data-is_active' => $question->is_active 
 						]);
 					} else {
 						echo Html::a('<i>' . $question->text . '</i>', [
@@ -34,7 +33,6 @@ $this->params['breadcrumbs'][] = $selected_genre->name;
 								'id' => $question->id
 						], [
 								'class' => 'btn btn-primary col-md-6 col-lg-6 col-sm-12 col-xs-12 text-justify disabled',
-								'data-is_active' => $question->is_active
 						]);
 					}
 				}

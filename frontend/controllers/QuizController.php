@@ -99,9 +99,21 @@ class QuizController extends Controller {
 	 */
 	public function actionApi($id) {
 		
-		$answered_question_model = new AnsweredQuestions();	
+		/*
+		 * generates a new database entry for answered questions
+		 */
+		$answered_question_model = new AnsweredQuestions();
+		/*
+		 * adds into the field 'user_id' the current user's id
+		 */
 		$answered_question_model->user_id = Yii::$app->user->id;
+		/*
+		 * adds into the field 'question_id' the current question's id
+		 */
 		$answered_question_model->question_id = $id;
+		/*
+		 * saves the current model as a database entry
+		 */
 		$answered_question_model->save();
 			
 		return $this->render('api');

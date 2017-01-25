@@ -1,25 +1,39 @@
 <?php
-$this->title = $selected_question->id;
-$this->params ['breadcrumbs'] [] = 'Questions';
-$this->params ['breadcrumbs'] [] = $this->title;
-?>
+use yii\helpers\Html;
 
-<div class="page-title">
-	<h1><?= $selected_question->text ?></h1>
-</div>
+$this->title = $selected_question->text;
+$this->params ['breadcrumbs'] [] = 'Questions';
+$this->params ['breadcrumbs'] [] = $selected_question->id;
+?>
 
 <div class="url" id="<?= dirname((Yii::$app->homeUrl)) ?>"></div>
 
-<div class="container-fluid">
-	<div class="answers">
-	<?php foreach($answers_model as $answer): ?>
-	
-		<button id="<?= $answer->question_id ?>"
-			style="margin-top: 1em; padding: 2em 2em"
-			data-true="<?= $answer->is_true ?>"
-			class="answer col-md-3 btn btn-primary">	<?= $answer->text ?></button>
-		
-	<?php endforeach; ?>
+<div class="container">
+	<div class="col-md-12">
+		<div class="col-md-6">
+			<div class="row">
+				<div class="page-header">
+					<h1><?= Html::encode($this->title) ?></h1>
+				</div>
+			</div>
+			<div class="row">
+				<div class="answers">
+					<?php foreach($answers_model as $answer): ?>
+				
+						<button id="<?= $answer->question_id ?>"
+							style="margin-top: 1em; padding: 2em 2em"
+							data-true="<?= $answer->is_true ?>"
+							class="answer col-md-6 btn btn-primary">	<?= $answer->text ?></button>
+					
+					<?php endforeach; ?>
+				</div>
+			</div>
+		</div>
+		<div class="col-md-6  question-photo">
+			<div class="photo">
+				<img src="<?= $selected_question->photo ?>"/>
+			</div>
+		</div>
 	</div>
 </div>
 
