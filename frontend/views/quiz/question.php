@@ -105,9 +105,7 @@ var is_not_hit = function() {
 
 var db_update = function() {
 	
-	$.get(home_url + '/web/quiz/api/' + id, {
-		
-	}, function() {
+	$.get(home_url + '/web/quiz/api/' + id, function() {
 		// API call done
 	});
 	

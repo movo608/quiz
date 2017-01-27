@@ -19,7 +19,8 @@ use yii\web\HttpException;
 
 /*
  * QuizzController is the root controller for the quizz section of the website
- * functions nested within this class: actionIndex(), actionQuestion(), actionAnswer()
+ * functions nested within this class: actionIndex(), actionQuestion(), actionAnswer(), 
+ * actionApi(), actionSpecial()
  */
 class QuizController extends Controller {
 
@@ -28,11 +29,6 @@ class QuizController extends Controller {
 	 * @return mixed
 	 */
 	public function actionIndex() {
-		
-		/*
-		 * sets a session 'score' posision to 0, will be changed by API call
-		 */
-		$_SESSION['score'] = 0;
 		
 		/*
 		 * gets all the genres from the DB
@@ -79,15 +75,22 @@ class QuizController extends Controller {
 		$selected_question = Questions::find()->where(['id' => $id])->one();
 		
 		/*
-		 * gets the possible answers for the question with the id = $id
-		 * each answer has a field of 'question_id', used for the query condition
+		 * if the question has already been answered, redirection to error page
 		 */
-		$answers_model = Answers::find()->where(['question_id' => $id])->all();
-		
-		return $this->render('question', [
-			'answers_model' => $answers_model,
-			'selected_question' => $selected_question
+		if (AnsweredQuestions::find()->where(['question_id' => $id, 'user_id' => Yii::$app->user->id])->one()) {
+			throw new HttpException('400', 'This question has already been answered to. Fuck off.');
+		} else {
+			/*
+			 * gets the possible answers for the question with the id = $id
+			 * each answer has a field of 'question_id', used for the query condition
+			 */
+			$answers_model = Answers::find()->where(['question_id' => $id])->all();
+			
+			return $this->render('question', [
+				'answers_model' => $answers_model,
+				'selected_question' => $selected_question
 		]);
+		}
 	}
 	
 	/*
@@ -126,14 +129,26 @@ class QuizController extends Controller {
 	 */
 	public function actionSpecial($id) {
 		
+		/*
+		 * checks if the special question's id exists within the database
+		 */
 		if ($special_model = SpecialQuestions::find()->where(['id' => $id])->one()) {
+			/*
+			 * finds the answers for the question with the id = $id
+			 */
 			$special_answers_model = SpecialQuestionsAnswers::find()->where(['special_question_id' => $id])->all();
 			
+			/*
+			 * passes the question model and answers model
+			 */
 			return $this->render('special', [
 					'special_model' => $special_model,
 					'special_answers_model' => $special_answers_model
 			]);
 		} else {
+			/*
+			 * redirection to error page
+			 */
 			throw new HttpException('400', 'The special question id provided in the url is invalid. Fuck off. Now.');
 		}
 	}
