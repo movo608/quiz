@@ -36,7 +36,7 @@ $this->params['breadcrumbs'][] = $selected_genre->name;
 								'class' => 'btn btn-primary col-md-3 col-lg-3 col-sm-12 col-xs-12 text-justify',
 						]);
 					} else {
-						echo Html::a('<i>' . $question->id . '</i>', [
+						echo Html::a('<i>' . $question->id . ' (LOCKED)' . '</i>', [
 								'/quiz/question/',
 								'id' => $question->id
 						], [
