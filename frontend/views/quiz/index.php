@@ -13,7 +13,7 @@ $this->params ['breadcrumbs'] [] = $this->title;
 		<div class="col-md-12">
 		<?php foreach($genres_model as $genre): ?>
 		
-			 <?= Html::a('<div class="col-md-6 btn btn-warning">' . $genre->name . '</div>', [ '/quiz/genre/','id' => $genre->id ])?>
+			 <?= Html::a('<div class="col-md-3 btn btn-warning">' . $genre->name . '</div>', [ '/quiz/genre/','id' => $genre->id ])?>
 		
 		<?php endforeach; ?>
 		</div>
