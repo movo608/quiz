@@ -6,6 +6,14 @@ $this->title = 'Questions';
 $this->params['breadcrumbs'][] = $selected_genre->name;
 ?>
 
+<style>
+
+	.btn {
+		padding: 0.5em 0.5em !important;
+	}
+
+</style>
+
 <div class="container-fluid">
 	<div class="col-md-12">
 		<div class="page-header">
@@ -21,18 +29,18 @@ $this->params['breadcrumbs'][] = $selected_genre->name;
 					
 					if (! $is_found = AnsweredQuestions::find()->where(['question_id' => $question->id, 'user_id' => Yii::$app->user->id])->one()) {
 					
-						echo Html::a('<i>' . $question->text . '</i>', [
+						echo Html::a('<i>' . $question->id . '</i>', [
 								'/quiz/question/',
 								'id' => $question->id 
 						], [
-								'class' => 'btn btn-primary col-md-6 col-lg-6 col-sm-12 col-xs-12 text-justify',
+								'class' => 'btn btn-primary col-md-3 col-lg-3 col-sm-12 col-xs-12 text-justify',
 						]);
 					} else {
-						echo Html::a('<i>' . $question->text . '</i>', [
+						echo Html::a('<i>' . $question->id . '</i>', [
 								'/quiz/question/',
 								'id' => $question->id
 						], [
-								'class' => 'btn btn-primary col-md-6 col-lg-6 col-sm-12 col-xs-12 text-justify disabled',
+								'class' => 'btn btn-primary col-md-3 col-lg-3 col-sm-12 col-xs-12 text-justify disabled',
 						]);
 					}
 				}
