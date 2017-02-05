@@ -31,7 +31,7 @@ $this->params ['breadcrumbs'] [] = $selected_question->id;
 		</div>
 		<div class="col-md-6  question-photo">
 			<div class="photo">
-				<img src="<?= $selected_question->photo ?>"/>
+				<img class="col-md-12" src="<?= $selected_question->photo ?>"/>
 			</div>
 		</div>
 	</div>
