@@ -36,14 +36,10 @@ return [
         'errorHandler' => [
             'errorAction' => 'site/error',
         ],
-        /*
-        'urlManager' => [
-            'enablePrettyUrl' => true,
-            'showScriptName' => false,
-            'rules' => [
-            ],
-        ],
-        */
+        'urlManagerBackend' => [
+        	'class' => 'yii\web\urlManager',
+        	'baseUrl' => 'quiz/backend/web/admin'
+        ]
     ],
     'params' => $params,
 ];

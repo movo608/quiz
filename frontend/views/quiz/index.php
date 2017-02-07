@@ -19,11 +19,22 @@ $this->params ['breadcrumbs'] [] = $this->title;
 	</div>
 	<div class="row">
 		<div class="genres col-md-12">
-		<?php foreach($genres_model as $genre): ?>
 		
-			 <?= Html::a('<div class="genre-tab col-md-3 btn btn-warning">' . $genre->name . '</div>', [ '/quiz/genre/','id' => $genre->id ])?>
+		<?php if (empty($genres_model)) { ?>
 		
-		<?php endforeach; ?>
+			<div class="no-genres-notice notice">
+				<h3>No music genres to display yet. Input the genres of your choice in the admin panel of the website.</h3>
+			</div>
+		
+		<?php } else { ?>
+		
+			<?php foreach($genres_model as $genre): ?>
+			
+				 <?= Html::a('<div class="genre-tab col-md-3 col-xs-6 col-sm-6 btn btn-warning">' . $genre->name . '</div>', [ '/quiz/genre/','id' => $genre->id ])?>
+			
+			<?php endforeach; ?>
+		
+		<?php } ?>
 		</div>
 	</div>
 </div>

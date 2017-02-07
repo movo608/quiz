@@ -3,16 +3,17 @@
 namespace backend\modules\admin\controllers;
 
 use Yii;
-use backend\models\Genres;
-use backend\models\GenresSearch;
+use backend\models\AnsweredQuestions;
+use backend\models\AnsweredQuestionsSearch;
 use yii\web\Controller;
 use yii\web\NotFoundHttpException;
 use yii\filters\VerbFilter;
+use yii\db\Query;
 
 /**
- * GenresController implements the CRUD actions for Genres model.
+ * AnsweredquestionsController implements the CRUD actions for AnsweredQuestions model.
  */
-class GenresController extends Controller
+class AnsweredquestionsController extends Controller
 {
     /**
      * @inheritdoc
@@ -30,12 +31,12 @@ class GenresController extends Controller
     }
 
     /**
-     * Lists all Genres models.
+     * Lists all AnsweredQuestions models.
      * @return mixed
      */
     public function actionIndex()
     {
-        $searchModel = new GenresSearch();
+        $searchModel = new AnsweredQuestionsSearch();
         $dataProvider = $searchModel->search(Yii::$app->request->queryParams);
 
         return $this->render('index', [
@@ -45,7 +46,7 @@ class GenresController extends Controller
     }
 
     /**
-     * Displays a single Genres model.
+     * Displays a single AnsweredQuestions model.
      * @param integer $id
      * @return mixed
      */
@@ -57,43 +58,27 @@ class GenresController extends Controller
     }
 
     /**
-     * Creates a new Genres model.
-     * If creation is successful, the browser will be redirected to the 'view' page.
+     * Drops the `Answered Questions` model table
      * @return mixed
      */
-    public function actionCreate()
-    {
-        $model = new Genres();
+    public function actionDrop() {
+        $model = new AnsweredQuestions();
 
-        if ($model->load(Yii::$app->request->post()) && $model->save()) {
-            return $this->redirect(['view', 'id' => $model->id]);
+        if (Yii::$app->request->post()) {
+        	$query = Yii::$app->db->createCommand()
+        	->truncateTable('answered_questions')
+        	->execute();
+        	
+            return $this->redirect(['index']);
         } else {
-            return $this->render('create', [
+            return $this->render('drop', [
                 'model' => $model,
             ]);
         }
     }
-    
-    public function actionDrop() {
-    	
-    	$model = new Genres();
-    	
-    	if (Yii::$app->request->post()) {
-    		$query = Yii::$app->db->createCommand()
-    		->truncateTable('genres')
-    		->execute();
-    		
-    		return $this->redirect(['index']);
-    	} else {
-    		return $this->render('drop', [
-    			'model' => $model
-    		]);
-    	}
-    	
-    }
 
     /**
-     * Updates an existing Genres model.
+     * Updates an existing AnsweredQuestions model.
      * If update is successful, the browser will be redirected to the 'view' page.
      * @param integer $id
      * @return mixed
@@ -112,7 +97,7 @@ class GenresController extends Controller
     }
 
     /**
-     * Deletes an existing Genres model.
+     * Deletes an existing AnsweredQuestions model.
      * If deletion is successful, the browser will be redirected to the 'index' page.
      * @param integer $id
      * @return mixed
@@ -125,15 +110,15 @@ class GenresController extends Controller
     }
 
     /**
-     * Finds the Genres model based on its primary key value.
+     * Finds the AnsweredQuestions model based on its primary key value.
      * If the model is not found, a 404 HTTP exception will be thrown.
      * @param integer $id
-     * @return Genres the loaded model
+     * @return AnsweredQuestions the loaded model
      * @throws NotFoundHttpException if the model cannot be found
      */
     protected function findModel($id)
     {
-        if (($model = Genres::findOne($id)) !== null) {
+        if (($model = AnsweredQuestions::findOne($id)) !== null) {
             return $model;
         } else {
             throw new NotFoundHttpException('The requested page does not exist.');

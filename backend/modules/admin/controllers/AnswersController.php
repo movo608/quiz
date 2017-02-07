@@ -75,6 +75,24 @@ class AnswersController extends Controller
             ]);
         }
     }
+    
+    public function actionDrop() {
+    	
+    	$model = new Answers();
+
+    	if (Yii::$app->request->post()) {
+    		$query = Yii::$app->db->createCommand()
+    		->truncateTable('answers')
+    		->execute();
+    		
+    		return $this->redirect(['index']);
+    	} else {
+    		return $this->render('drop', [
+    			'model' => $model	
+    		]);
+    	}
+    	
+    }
 
     /**
      * Updates an existing Answers model.

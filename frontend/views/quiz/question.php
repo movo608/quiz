@@ -16,29 +16,28 @@ $this->params ['breadcrumbs'] [] = $selected_question->id;
 					<h1><?= Html::encode($this->title) ?></h1>
 				</div>
 			</div>
-			<div class="row">
-				<div class="answers">
-					<?php foreach($answers_model as $answer): ?>
+			<div class="answers">
+				<?php foreach($answers_model as $answer): ?>
 				
-						<button id="<?= $answer->question_id ?>"
-							style="margin-top: 1em; padding: 2em 2em"
-							data-true="<?= $answer->is_true ?>"
-							class="answer col-md-12 btn btn-primary">	<?= $answer->text ?></button>
-							<!-- class="col-md-6" removed from <button> tag -->
-					<?php endforeach; ?>
-				</div>
+					<button id="<?= $answer->question_id ?>"
+						style="margin-top: 1em; padding: 2em 2em"
+						data-true="<?= $answer->is_true ?>"
+						class="answer col-sm-12 col-xs-12 col-md-12 btn btn-primary">	<?= $answer->text ?></button>
+						<!-- class="col-md-6" removed from <button> tag -->
+						
+				<?php endforeach; ?>
 			</div>
 		</div>
-		<div class="col-md-6  question-photo">
+		<div style="margin-top: 1em" class="col-md-6 col-xs-12 col-sm-12 col-lg-6 question-photo">
 			<div class="photo">
-				<img class="col-md-12" src="<?= $selected_question->photo ?>"/>
+				<img class="col-md-12 col-xs-12 col-sm-12 col-lg-12" src="<?= $selected_question->photo ?>"/>
 			</div>
 		</div>
 	</div>
 </div>
 
 <div class="jumbotron">
-	<div class="col-md-12">
+	<div class="col-md-12 col-sm-12 col-xs-12 col-lg-12">
 		<h1 class="result"></h1>
 	</div>
 </div>

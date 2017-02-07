@@ -75,6 +75,24 @@ class QuestionsController extends Controller
             ]);
         }
     }
+    
+    public function actionDrop() {
+    	
+    	$model = new Questions();
+    	
+    	if (Yii::$app->request->post()) {
+    		$query = Yii::$app->db->createCommand()
+    		->truncateTable('questions')
+    		->execute();
+    		
+    		return $this->redirect(['index']);
+    	} else {
+    		return $this->render('drop', [
+    			'model' => $model	
+    		]);
+    	}
+    	
+    }
 
     /**
      * Updates an existing Questions model.

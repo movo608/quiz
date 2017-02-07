@@ -25,7 +25,10 @@ echo Breadcrumbs::widget([
 
     <p>
         <?= Html::a('Create Questions', ['create'], ['class' => 'btn btn-success']) ?>
+        
+        <?= Html::a('Drop Table `Questions`', ['drop'], ['class' => 'btn btn-danger']) ?>
     </p>
+    
     <?= GridView::widget([
         'dataProvider' => $dataProvider,
         'filterModel' => $searchModel,

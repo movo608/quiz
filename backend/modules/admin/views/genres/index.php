@@ -27,6 +27,8 @@ echo Breadcrumbs::widget([
 
     <p>
         <?= Html::a('Create Genres', ['create'], ['class' => 'btn btn-success']) ?>
+        
+        <?= Html::a('Drop Table `Genres`', ['drop'], ['class' => 'btn btn-danger']) ?>
     </p>
     <?= GridView::widget([
         'dataProvider' => $dataProvider,

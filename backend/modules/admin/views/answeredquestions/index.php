@@ -2,31 +2,21 @@
 
 use yii\helpers\Html;
 use yii\grid\GridView;
-use yii\widgets\Breadcrumbs;
 
 /* @var $this yii\web\View */
-/* @var $searchModel backend\models\AnswersSearch */
+/* @var $searchModel backend\models\AnsweredQuestionsSearch */
 /* @var $dataProvider yii\data\ActiveDataProvider */
 
-$this->title = 'Answers';
-
-echo Breadcrumbs::widget([
-		'itemTemplate' => "<li><i>{link}</i></li>\n",
-		'links' => [
-				['label' => 'Admin', 'url' => ['/admin']],
-				['label' => $this->title]
-		]
-]);
+$this->title = 'Answered Questions';
+$this->params['breadcrumbs'][] = $this->title;
 ?>
-<div class="answers-index">
+<div class="answered-questions-index">
 
     <h1><?= Html::encode($this->title) ?></h1>
     <?php // echo $this->render('_search', ['model' => $searchModel]); ?>
 
     <p>
-        <?= Html::a('Create Answers', ['create'], ['class' => 'btn btn-success']) ?>
-        
-        <?= Html::a('Drop Table `Answers`', ['drop'], ['class' => 'btn btn-danger']) ?>
+        <?= Html::a('Drop Table `Answered Questions`', ['drop'], ['class' => 'btn btn-danger']) ?>
     </p>
     <?= GridView::widget([
         'dataProvider' => $dataProvider,
@@ -35,14 +25,13 @@ echo Breadcrumbs::widget([
             ['class' => 'yii\grid\SerialColumn'],
 
             //'id',
+            //'user_id',
             'question_id' => [
             	'attribute' => 'question_id',
             	'value' => 'questionsQuestion.text'
     		],
-            'text',
-            'is_true',
 
-            ['class' => 'yii\grid\ActionColumn'],
-        ]
+            ['class' => 'yii\grid\ActionColumn', 'template' => '{delete}'],
+        ],
     ]); ?>
 </div>

@@ -14,6 +14,13 @@ echo Breadcrumbs::widget([
 		]
 ]);
 ?>
+
+<style type="text/css">
+	.owner-instructions p {
+		font-size: 1.3em;
+	}
+</style>
+
 <div class="site-index">
 	<div class="page-header">
 		<h1>The Back-end</h1>
@@ -25,20 +32,28 @@ echo Breadcrumbs::widget([
 			</div>
 		</div>
 	</div>
+	
 	<hr>
+	
 	<div class="row">
-		<div class="owner-instructions col-md-12" style="font-size: 1.4em">
+		<div class="owner-instructions col-md-12">
 			<div class="col-md-4">
-				Inside the 'genres' tab, you may decide upon adding or removing music genres.
+				<h3>Genres</h3>
+				<p>Inside the 'genres' tab, you may decide upon adding or removing music genres.</p>
 			</div>
 			<div class="col-md-4">
-				Inside the 'questions' tab, you may decide upon adding or removing questions related to specific music genres.
+				<h3>Questions</h3>
+				<p>Inside the 'questions' tab, you may decide upon adding or removing questions related to specific music genres.</p>
 			</div>
 			<div class="col-md-4">
-				Inside the 'asnwers' tab, you may decide upon adding or removing answers related to a specific question.
+				<h3>Answers</h3>
+				<p>Inside the 'asnwers' tab, you may decide upon adding or removing answers related to a specific question.</p>
 			</div>
 		</div>
 	</div>
+	
+	<hr>
+	
 	<div class="jumbotron">
 		<div class="row">
 			<h3>Click <?= Html::a('here', ['/admin']) ?> in order to access the admin panel.</h3>
@@ -64,12 +79,13 @@ echo Breadcrumbs::widget([
 					<p>The website is provided 'as is', changes within the website are allowed to be made 
 					without further notice to the author, admin or creator.
 					</p>
-					<p>However, the author must be given credit by not removing his information from the footer of
+					<p>However, the author must be given credit by not removing his information from the left-hand side on the footer of
 					the website.
 					</p>
 					<p>Credit will also be given to the creators of the framework on which the entire application is
-					based, which is to say, the Yii2 framework.
+					based, which is to say, the Yii2 Framework through the notice on the right-hand-side of the footer.
 					</p>
+					<p>This work may not be copied nor redistributed without further notice to the author.</p>
 				</details>
 			</div>
 		</div>
