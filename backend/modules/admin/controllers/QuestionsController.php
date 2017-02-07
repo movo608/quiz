@@ -8,6 +8,7 @@ use backend\models\QuestionsSearch;
 use yii\web\Controller;
 use yii\web\NotFoundHttpException;
 use yii\filters\VerbFilter;
+use backend\models\Genres;
 
 /**
  * QuestionsController implements the CRUD actions for Questions model.
@@ -50,9 +51,10 @@ class QuestionsController extends Controller
      * @return mixed
      */
     public function actionView($id)
-    {
+    { 	
         return $this->render('view', [
             'model' => $this->findModel($id),
+        	'genre' => Genres::find()->where(['id' => $this->findModel($id)->genre_id])->one()
         ]);
     }
 

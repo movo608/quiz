@@ -3,6 +3,7 @@
 namespace backend\models;
 
 use Yii;
+use frontend\models\Questions;
 
 /**
  * This is the model class for table "answers".
@@ -41,9 +42,14 @@ class Answers extends \yii\db\ActiveRecord
     {
         return [
             'id' => 'ID',
-            'question_id' => 'Question ID',
-            'text' => 'Text',
+            'question_id' => 'Question',
+            'text' => 'Answer Text',
             'is_true' => 'Is True',
         ];
+    }
+    
+    public function getQuestionsQuestion() {
+    	
+    	return $this->hasOne(Questions::className(), ['id' => 'question_id']);
     }
 }

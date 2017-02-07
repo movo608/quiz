@@ -29,15 +29,19 @@ echo Breadcrumbs::widget([
     <?= GridView::widget([
         'dataProvider' => $dataProvider,
         'filterModel' => $searchModel,
+    	'layout' => "{summary}\n{items}\n{pager}",
         'columns' => [
             ['class' => 'yii\grid\SerialColumn'],
 
             //'id',
-            'question_id',
+            'question_id' => [
+            	'attribute' => 'question_id',
+            	'value' => 'questionsQuestion.text'
+    		],
             'text',
             'is_true',
 
             ['class' => 'yii\grid\ActionColumn'],
-        ],
+        ]
     ]); ?>
 </div>

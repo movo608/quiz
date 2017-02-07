@@ -41,9 +41,14 @@ class Questions extends \yii\db\ActiveRecord
     {
         return [
             'id' => 'ID',
-            'genre_id' => 'Genre ID',
+            'genre_id' => 'Genre',
             'text' => 'Text',
             'photo' => 'Photo',
         ];
+    }
+    
+    public function getGenresGenre() {
+    	
+    	return $this->hasOne(Genres::className(), ['id' => 'genre_id']);
     }
 }

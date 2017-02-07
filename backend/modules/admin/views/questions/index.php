@@ -32,10 +32,20 @@ echo Breadcrumbs::widget([
         'columns' => [
             ['class' => 'yii\grid\SerialColumn'],
 
-            //'id',
-            'genre_id',
+            'id' => [
+            	'attribute' => 'id',
+            	'value' => 'id',
+            	'header' => 'Question ID'
+    		],
+            'genre_id' => [
+            	'attribute' => 'genre_id',
+            	'value' => 'genresGenre.name'
+    		],
             'text',
-            'photo',
+            'photo' => [
+            	'format' => ['image', ['class' => 'col-md-12 col-lg-12 col-xs-12']],
+            	'attribute' => 'photo',
+    		],
 
             ['class' => 'yii\grid\ActionColumn'],
         ],

@@ -8,6 +8,7 @@ use backend\models\AnswersSearch;
 use yii\web\Controller;
 use yii\web\NotFoundHttpException;
 use yii\filters\VerbFilter;
+use backend\models\Questions;
 
 /**
  * AnswersController implements the CRUD actions for Answers model.
@@ -53,6 +54,7 @@ class AnswersController extends Controller
     {
         return $this->render('view', [
             'model' => $this->findModel($id),
+        	'question' => Questions::find()->where(['id' => $this->findModel($id)->question_id])->one()
         ]);
     }
 

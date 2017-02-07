@@ -6,7 +6,7 @@ use yii\widgets\DetailView;
 /* @var $this yii\web\View */
 /* @var $model backend\models\Questions */
 
-$this->title = $model->id;
+$this->title = 'Question ' . $model->id;
 $this->params['breadcrumbs'][] = ['label' => 'Questions', 'url' => ['index']];
 $this->params['breadcrumbs'][] = $this->title;
 ?>
@@ -29,9 +29,15 @@ $this->params['breadcrumbs'][] = $this->title;
         'model' => $model,
         'attributes' => [
             'id',
-            'genre_id',
+            'genre_id' => [
+            	'attribute' => 'genre_id',
+            	'value' => $genre->name
+    		],
             'text',
-            'photo',
+            'photo' => [
+            	'format' => ['image', ['class' => 'col-md-2 col-lg-2 col-xs-2']],
+            	'attribute' => 'photo',
+    		],
         ],
     ]) ?>
 

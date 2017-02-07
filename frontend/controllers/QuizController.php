@@ -8,13 +8,13 @@ use yii\web\controller;
  * uses the models for genres, questions and answers
  * located in the common\models directory within the app
  */
-use common\models\Genres;
-use common\models\Questions;
-use common\models\Answers;
+use frontend\models\Genres;
+use frontend\models\Questions;
+use frontend\models\Answers;
 use Symfony\Component\Console\Question\Question;
-use common\models\AnsweredQuestions;
-use common\models\SpecialQuestions;
-use common\models\SpecialQuestionsAnswers;
+use frontend\models\AnsweredQuestions;
+use frontend\models\SpecialQuestions;
+use frontend\models\SpecialQuestionsAnswers;
 use yii\web\HttpException;
 
 /*

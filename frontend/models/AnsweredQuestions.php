@@ -1,25 +1,24 @@
 <?php
 
-namespace common\models;
+namespace frontend\models;
 
 use Yii;
 
 /**
- * This is the model class for table "answers".
+ * This is the model class for table "answered_questions".
  *
  * @property integer $id
+ * @property integer $user_id
  * @property integer $question_id
- * @property string $text
- * @property integer $is_true
  */
-class Answers extends \yii\db\ActiveRecord
+class AnsweredQuestions extends \yii\db\ActiveRecord
 {
     /**
      * @inheritdoc
      */
     public static function tableName()
     {
-        return 'answers';
+        return 'answered_questions';
     }
 
     /**
@@ -28,9 +27,8 @@ class Answers extends \yii\db\ActiveRecord
     public function rules()
     {
         return [
-            [['question_id', 'text', 'is_true'], 'required'],
-            [['question_id', 'is_true'], 'integer'],
-            [['text'], 'string', 'max' => 256],
+            [['user_id', 'question_id'], 'required'],
+            [['user_id', 'question_id'], 'integer'],
         ];
     }
 
@@ -41,9 +39,8 @@ class Answers extends \yii\db\ActiveRecord
     {
         return [
             'id' => 'ID',
+            'user_id' => 'User ID',
             'question_id' => 'Question ID',
-            'text' => 'Text',
-            'is_true' => 'Is True',
         ];
     }
 }

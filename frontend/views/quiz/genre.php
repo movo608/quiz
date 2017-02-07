@@ -1,6 +1,6 @@
 <?php
 use yii\helpers\Html;
-use common\models\AnsweredQuestions;
+use frontend\models\AnsweredQuestions;
 
 $this->title = 'Questions';
 $this->params['breadcrumbs'][] = $selected_genre->name;

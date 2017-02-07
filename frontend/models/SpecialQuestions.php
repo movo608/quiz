@@ -1,6 +1,6 @@
 <?php
 
-namespace common\models;
+namespace frontend\models;
 
 use Yii;
 
@@ -29,8 +29,9 @@ class SpecialQuestions extends \yii\db\ActiveRecord
     {
         return [
             [['text', 'add_on_type', 'add_on'], 'required'],
-            [['text', 'add_on'], 'string', 'max' => 256],
+            [['text'], 'string', 'max' => 800],
             [['add_on_type'], 'string', 'max' => 10],
+            [['add_on'], 'string', 'max' => 256],
         ];
     }
 
