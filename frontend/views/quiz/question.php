@@ -23,8 +23,8 @@ $this->params ['breadcrumbs'] [] = $selected_question->id;
 						<button id="<?= $answer->question_id ?>"
 							style="margin-top: 1em; padding: 2em 2em"
 							data-true="<?= $answer->is_true ?>"
-							class="answer col-md-6 btn btn-primary">	<?= $answer->text ?></button>
-					
+							class="answer col-md-12 btn btn-primary">	<?= $answer->text ?></button>
+							<!-- class="col-md-6" removed from <button> tag -->
 					<?php endforeach; ?>
 				</div>
 			</div>

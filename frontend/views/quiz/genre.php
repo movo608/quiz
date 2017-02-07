@@ -6,14 +6,6 @@ $this->title = 'Questions';
 $this->params['breadcrumbs'][] = $selected_genre->name;
 ?>
 
-<style>
-
-	.btn {
-		padding: 0.5em 0.5em !important;
-	}
-
-</style>
-
 <div class="container-fluid">
 	<div class="col-md-12">
 		<div class="page-header">

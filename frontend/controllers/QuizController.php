@@ -23,13 +23,11 @@ use yii\web\HttpException;
  * actionApi(), actionSpecial()
  */
 class QuizController extends Controller {
-
 	/*
 	 * renders the index page
 	 * @return mixed
 	 */
 	public function actionIndex() {
-		
 		/*
 		 * gets all the genres from the DB
 		 */
@@ -68,7 +66,6 @@ class QuizController extends Controller {
 	 * @return mixed
 	 */
 	public function actionQuestion($id) {
-		
 		/*
 		 * gets the question which has the id = $id
 		 */
@@ -89,7 +86,7 @@ class QuizController extends Controller {
 			return $this->render('question', [
 				'answers_model' => $answers_model,
 				'selected_question' => $selected_question
-		]);
+			]);
 		}
 	}
 	
