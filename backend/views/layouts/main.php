@@ -47,7 +47,9 @@ AppAsset::register($this);
     		'label' => 'Questions',
     		'items' => [
     			['label' => 'Questions', 'url' => ['/admin/questions']],
+    			'<li class="divider"></li>',
     			['label' => 'Answers', 'url' => ['/admin/answers']],
+    			'<li class="divider"></li>',
     			['label' => 'Answered Questions', 'url' => ['/admin/answeredquestions']]
     		]
     	];
@@ -56,6 +58,7 @@ AppAsset::register($this);
     		'label' => 'Special Questions',
     		'items' => [
     			['label' => 'Special Questions', 'url' => ['/admin/special']],
+    			'<li class="divider"></li>',
     			['label' => 'Special Answers', 'url' => ['/admin/specialanswers']]
     		]
     	];

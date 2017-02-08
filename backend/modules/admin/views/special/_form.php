@@ -11,6 +11,8 @@ use yii\widgets\ActiveForm;
 <div class="special-questions-form">
 
     <?php $form = ActiveForm::begin(); ?>
+    
+    <?= $form->field($model, 'id')->textInput() ?>
 
     <?= $form->field($model, 'text')->textInput(['maxlength' => true]) ?>
 

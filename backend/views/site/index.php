@@ -19,6 +19,15 @@ echo Breadcrumbs::widget([
 	.owner-instructions p {
 		font-size: 1.3em;
 	}
+	
+	.author img {
+		opacity: .4;
+		transition: opacity 1s;
+	}
+	
+	.author img:hover {
+		opacity: 1;
+	}
 </style>
 
 <div class="site-index">
@@ -26,8 +35,8 @@ echo Breadcrumbs::widget([
 		<h1>The Back-end</h1>
 	</div>
 	<div class="row">
-		<div class="col-md-12">
-			<div class="description" style="font-size: 2em">
+		<div class="col-md-12 col-xs-12 col-sm-12 col-lg-12">
+			<div class="description text-center" style="font-size: 2em">
 				Through the backend, one may have access to the database entries.
 			</div>
 		</div>
@@ -37,18 +46,63 @@ echo Breadcrumbs::widget([
 	
 	<div class="row">
 		<div class="owner-instructions col-md-12">
-			<div class="col-md-4">
-				<h3>Genres</h3>
-				<p>Inside the 'genres' tab, you may decide upon adding or removing music genres.</p>
+			<div class="row">
+				<div class="genres col-sm-12 col-xs-12 col-lg-12 col-md-12 text-center">
+					<h3>Genres</h3>
+					<p>Inside the 'genres' tab, you may decide upon adding or removing music genres.</p>
+				</div>
 			</div>
-			<div class="col-md-4">
-				<h3>Questions</h3>
-				<p>Inside the 'questions' tab, you may decide upon adding or removing questions related to specific music genres.</p>
+			
+			<hr>
+			
+			<div class="row">
+				<div class="questions col-md-12 text-center">
+					<div class="header">
+						<h3>Questions</h3>
+					</div>
+					<div class="col-md-4">
+						<details>
+							<summary>Questions</summary>
+							<p>From here, one can have access to all the questions in the database.</p>
+						</details>
+					</div>
+					<div class="col-md-4">
+						<details>
+							<summary>Questions Answers</summary>
+							<p>From here, one can have access to all the answers related to questions in the database.</p>
+						</details>
+					</div>
+					<div class="col-md-4">
+						<details>
+							<summary>Answered Questions</summary>
+							<p>From here, one can have access to all the answered questions in the database.</p>
+						</details>
+					</div>
+				</div>
 			</div>
-			<div class="col-md-4">
-				<h3>Answers</h3>
-				<p>Inside the 'asnwers' tab, you may decide upon adding or removing answers related to a specific question.</p>
+			
+			<hr>
+			
+			<div class="row">
+				<div class="special col-md-12 text-center">
+					<div class="header">
+						<h3 class="text-center">Specials</h3>
+					</div>
+					<div class="col-md-6">
+						<details>
+							<summary>Special Questions</summary>
+							<p>From here, one can have access to all the special questions in the database.</p>
+						</details>
+					</div>
+					<div class="col-md-6">
+						<details>
+							<summary>Special Questions Answers</summary>
+							<p>From here, one can have access to all the special questions answers in the database.</p>
+						</details>
+					</div>
+				</div>
 			</div>
+			
 		</div>
 	</div>
 	

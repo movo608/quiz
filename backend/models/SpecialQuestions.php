@@ -28,6 +28,7 @@ class SpecialQuestions extends \yii\db\ActiveRecord
     public function rules()
     {
         return [
+        	[['id'], 'integer'],
             [['text', 'add_on_type', 'add_on'], 'required'],
             [['text'], 'string', 'max' => 800],
             [['add_on_type'], 'string', 'max' => 10],
