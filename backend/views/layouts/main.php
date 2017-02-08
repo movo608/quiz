@@ -40,10 +40,26 @@ AppAsset::register($this);
     if (Yii::$app->user->isGuest) {
         $menuItems[] = ['label' => 'Login', 'url' => ['/site/login']];
     } else {
+    	
     	$menuItems[] = ['label' => 'Genres', 'url' => ['/admin/genres']];
-    	$menuItems[] = ['label' => 'Question', 'url' => ['/admin/questions']];
-    	$menuItems[] = ['label' => 'Answers', 'url' => ['/admin/answers']];
-    	$menuItems[] = ['label' => 'Answered Questions', 'url' => ['/admin/answeredquestions']];
+    	
+    	$menuItems[] = [
+    		'label' => 'Questions',
+    		'items' => [
+    			['label' => 'Questions', 'url' => ['/admin/questions']],
+    			['label' => 'Answers', 'url' => ['/admin/answers']],
+    			['label' => 'Answered Questions', 'url' => ['/admin/answeredquestions']]
+    		]
+    	];
+    	
+    	$menuItems[] = [
+    		'label' => 'Special Questions',
+    		'items' => [
+    			['label' => 'Special Questions', 'url' => ['/admin/special']],
+    			['label' => 'Special Answers', 'url' => ['/admin/specialanswers']]
+    		]
+    	];
+    	
         $menuItems[] = '<li>'
             . Html::beginForm(['/site/logout'], 'post')
             . Html::submitButton(

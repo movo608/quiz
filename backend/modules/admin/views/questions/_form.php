@@ -2,6 +2,8 @@
 
 use yii\helpers\Html;
 use yii\widgets\ActiveForm;
+use yii\helpers\ArrayHelper;
+use backend\models\Genres;
 
 /* @var $this yii\web\View */
 /* @var $model backend\models\Questions */
@@ -12,7 +14,9 @@ use yii\widgets\ActiveForm;
 
     <?php $form = ActiveForm::begin(); ?>
 
-    <?= $form->field($model, 'genre_id')->textInput() ?>
+    <?= $form->field($model, 'genre_id')->dropDownList(
+    	ArrayHelper::map(Genres::find()->all(), 'id', 'name')		
+    ) ?>
 
     <?= $form->field($model, 'text')->textInput(['maxlength' => true]) ?>
 

@@ -36,10 +36,6 @@ return [
         'errorHandler' => [
             'errorAction' => 'site/error',
         ],
-        'urlManagerBackend' => [
-        	'class' => 'yii\web\urlManager',
-        	'baseUrl' => 'quiz/backend/web/admin'
-        ]
     ],
     'params' => $params,
 ];
