@@ -76,6 +76,9 @@ class AnswersController extends Controller
         }
     }
     
+    /*
+     * drops the table answers
+     */
     public function actionDrop() {
     	
     	$model = new Answers();

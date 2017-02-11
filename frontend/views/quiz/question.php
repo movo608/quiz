@@ -17,15 +17,26 @@ $this->params ['breadcrumbs'] [] = $selected_question->id;
 				</div>
 			</div>
 			<div class="answers">
-				<?php foreach($answers_model as $answer): ?>
+			
+				<?php if (empty($answers_model)) { ?>
 				
-					<button id="<?= $answer->question_id ?>"
-						style="margin-top: 1em; padding: 2em 2em"
-						data-true="<?= $answer->is_true ?>"
-						class="answer col-sm-12 col-xs-12 col-md-12 btn btn-primary">	<?= $answer->text ?></button>
-						<!-- class="col-md-6" removed from <button> tag -->
-						
-				<?php endforeach; ?>
+					<div class="empty-result">
+						<h2>No answers linked to this question. Add some into the admin panel. (:</h2>
+					</div>
+				
+				<?php } else { ?>
+			
+					<?php foreach($answers_model as $answer): ?>
+					
+						<button id="<?= $answer->question_id ?>"
+							style="margin-top: 1em; padding: 2em 2em"
+							data-true="<?= $answer->is_true ?>"
+							class="answer col-sm-12 col-xs-12 col-md-12 btn btn-primary">	<?= $answer->text ?></button>
+							<!-- class="col-md-6" removed from <button> tag -->
+							
+					<?php endforeach; ?>
+				
+				<?php } ?>
 			</div>
 		</div>
 		<div style="margin-top: 1em" class="col-md-6 col-xs-12 col-sm-12 col-lg-6 question-photo">

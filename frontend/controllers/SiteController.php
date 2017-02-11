@@ -70,9 +70,13 @@ class SiteController extends Controller
      *
      * @return mixed
      */
-    public function actionIndex()
-    {
-        return $this->redirect(['/quiz']);
+    public function actionIndex() {
+    	
+        if (Yii::$app->user->isGuest) {
+        	return $this->render('index');
+        } else {
+        	return $this->redirect(['/quiz']);
+        }
     }
 
     /**
